@@ -23,4 +23,4 @@ Enquanto esses arquivos não são fornecidos, o projeto apresenta conteúdo demo
 
 ## Tecnologias
 
-HTML semântico, CSS puro, TypeScript e Vite. Preferências de idioma e tema são armazenadas somente em `localStorage` do navegador.
+HTML semântico, CSS puro, JavaScript e Vite. Preferências de idioma e tema são armazenadas somente em `localStorage` do navegador. Os arquivos em `src/` foram mantidos em JavaScript comum para facilitar edições diretas no VS Code.
