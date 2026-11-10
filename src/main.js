@@ -53,7 +53,7 @@ function header() {
 function levelCards() {
     return ['easy', 'medium', 'hard'].map((key) => `<button class="level-card" data-level="${key}">${levelLabel(key)}</button>`).join('');
 }
-function home() { return `<main class="hero welcome"><h2>Bem vindo(a) ao jogo Sagath</h2><p>Esse jogo é composto por 3 fases, estimule o seu raciocínio enquanto se diverte!</p><button class="round-action" data-nav="levels">Jogar</button></main>`; }
+function home() { return `<main class="hero welcome"><h2>Bem vindo(a) ao jogo <span class="welcome-brand">Sagath</span></h2><p>Esse jogo é composto por 3 fases, estimule o seu raciocínio enquanto se diverte!</p><button class="round-action" data-nav="levels">Jogar</button></main>`; }
 function levels() { return `<main class="page narrow level-choice"><h2>Escolha o nível</h2><div class="level-grid">${levelCards()}</div></main>`; }
 function about() { return `<main class="page prose"><p class="eyebrow">Sagath</p><h1>${t().about}</h1><h2>${t().projectTitle}</h2><p>${t().projectText}</p><p>${t().principles}</p><button class="secondary" data-nav="home">${t().back}</button></main>`; }
 function instructions() {

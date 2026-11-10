@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Boogaloo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Boogaloo&family=Nunito:wght@400;600;700&display=swap');
 
 @font-face {
   font-family: 'Hyperwave Two';
@@ -6,20 +6,20 @@
   font-display: swap;
 }
 
-:root { background: #ede2d0; color: #fff7ed; font-family: Arial, Helvetica, sans-serif; }
+:root { background: #ede2d0; color: #fff7ed; font-family: 'Nunito', Arial, sans-serif; }
 * { box-sizing: border-box; }
 body { min-width: 320px; margin: 0; background: #ede2d0; color: #fff7ed; }
 button { border: 0; cursor: pointer; font: inherit; }
 
 .site-header { position: relative; max-width: 1180px; margin: 0 auto; padding: 28px 24px 20px; text-align: center; }
-.brand { margin: 0; color: #793937; font-family: 'Hyperwave Two', Georgia, serif; font-size: 32pt; font-weight: 400; line-height: 1; }
+.brand { margin: 0; color: #793937; font-family: 'Hyperwave Two', Georgia, serif; font-size: 64pt; font-weight: 400; line-height: 1; }
 .main-navigation { display: flex; justify-content: center; gap: 12px; margin-top: 16px; }
-.nav-button { min-width: 96px; padding: 8px 20px; border-radius: 6px; background: #884e49; color: #fff7ed; font-family: 'Boogaloo', cursive; font-size: 1.2rem; }
+.nav-button { min-width: 132px; padding: 12px 28px; border-radius: 6px; background: #884e49; color: #fff7ed; font-family: 'Boogaloo', cursive; font-size: 1.55rem; }
 .nav-button:hover, .nav-button:focus-visible { background: #793937; }
 .header-actions { position: absolute; top: 24px; right: 24px; display: flex; gap: 6px; }
 .icon-button { width: 32px; height: 32px; border: 1px solid #b77c70; border-radius: 50%; background: transparent; color: #793937; font-size: .8rem; font-weight: 700; }
 
-.hero, .page { width: min(calc(100% - 40px), 1120px); min-height: calc(100vh - 180px); margin: 0 auto 28px; padding: clamp(28px, 5vw, 64px); border: 3px solid #884e49; border-radius: 4px; background: #bfa5a2; box-shadow: 0 4px 12px rgb(73 35 31 / 18%); }
+.hero, .page { width: min(calc(100% - 40px), 1120px); height: 680px; margin: 0 auto 28px; padding: clamp(28px, 5vw, 64px); overflow-y: auto; border: 3px solid #884e49; border-radius: 4px; background: #bfa5a2; box-shadow: 0 4px 12px rgb(73 35 31 / 18%); }
 .hero { display: flex; flex-direction: column; justify-content: center; }
 .hero h1, .page h1 { max-width: 750px; margin: 0 0 20px; color: #fff7ed; font-family: Georgia, serif; font-size: clamp(2.3rem, 6vw, 4.6rem); font-weight: 400; line-height: 1.08; }
 .hero p, .prose p, .instruction p { max-width: 680px; font-size: 1.1rem; line-height: 1.65; }
@@ -27,22 +27,22 @@ button { border: 0; cursor: pointer; font: inherit; }
 .eyebrow { margin: 0 0 12px; font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
 .primary, .secondary, .small-button { min-height: 46px; padding: 0 22px; border: 1px solid transparent; border-radius: 5px; font-weight: 700; }
-.primary { background: #fff7ed; color: #793937; }
-.secondary, .small-button { border-color: #f5d9c9; background: transparent; color: #fff7ed; }
+.primary, .secondary, .small-button { border-color: #884e49; background: #884e49; color: #fff7ed; }
 .text-button { padding: 7px 0; background: transparent; color: #fff7ed; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 .welcome, .level-choice, .instruction { display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; }
-.welcome h2, .level-choice h2, .instruction h2 { margin: 0 0 18px; color: #793937; font-family: Georgia, serif; font-size: clamp(2rem, 5vw, 3.7rem); font-weight: 400; }
+.welcome h2, .level-choice h2, .instruction h2 { margin: 0 0 18px; color: #793937; font-family: 'Boogaloo', cursive; font-size: clamp(2rem, 5vw, 3.7rem); font-weight: 400; }
+.welcome-brand { font-family: 'Hyperwave Two', Georgia, serif; text-decoration: underline; text-underline-offset: .15em; }
 .welcome p, .instruction p { max-width: 650px; margin: 0 0 30px; color: #4e2927; font-size: clamp(1rem, 2.2vw, 1.25rem); }
-.round-action { display: grid; width: 126px; height: 126px; place-items: center; border-radius: 50%; background: #7d411f; color: #fff7ed; font-family: 'Boogaloo', cursive; font-size: 1.45rem; }
-.round-action:hover { background: #663518; }
+.round-action { display: grid; width: 126px; height: 126px; place-items: center; border-radius: 50%; background: #884e49; color: #fff7ed; font-family: 'Boogaloo', cursive; font-size: 1.45rem; }
+.round-action:hover { background: #793937; }
 .phase-examples { display: grid; grid-template-columns: repeat(2, minmax(120px, 220px)); gap: 16px; justify-content: center; margin: 0 auto 30px; }
 .image-placeholder { display: grid; min-height: 120px; place-items: center; padding: 14px; border: 2px dashed #884e49; border-radius: 4px; color: #793937; font-weight: 700; }
 .image-placeholder small { font-weight: 400; }
 .narrow { max-width: 880px; text-align: center; }.narrow > * { margin-left: auto; margin-right: auto; }.prose { max-width: 900px; }.prose h2 { margin-top: 40px; font-family: Georgia, serif; font-size: 1.7rem; font-weight: 400; }.instruction { max-width: 680px; }.instruction-icon { margin: 22px auto; font-size: 4.5rem; }
 
-.level-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-top: 36px; }.level-card { width: 126px; height: 126px; padding: 12px; border-radius: 50%; background: #7d411f; color: #fff7ed; font-family: 'Boogaloo', cursive; font-size: 1.45rem; }.level-card:hover { background: #663518; }
+.level-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-top: 36px; }.level-card { width: 126px; height: 126px; padding: 12px; border-radius: 50%; background: #884e49; color: #fff7ed; font-family: 'Boogaloo', cursive; font-size: 1.45rem; }.level-card:hover { background: #793937; }
 .game { max-width: 1020px; padding-top: 28px; }.game-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; }.game-meta { display: flex; gap: 16px; font-size: .92rem; }.game-meta strong { font-variant-numeric: tabular-nums; }
 .memory-grid { display: grid; grid-template-columns: repeat(5, 1fr); max-width: 760px; gap: 12px; margin: auto; }.memory-card { position: relative; aspect-ratio: .78; overflow: hidden; border-radius: 5px; background: #f0d2bd; color: #793937; perspective: 600px; }.card-front, .card-back { position: absolute; inset: 0; display: flex; padding: 10px; align-items: center; justify-content: center; text-align: center; flex-direction: column; backface-visibility: hidden; transition: transform .25s ease; }.card-back { background: #f0d2bd; color: #793937; font-size: 1.7rem; }.card-front { background: #fff7ed; font-size: clamp(1rem, 3vw, 1.45rem); font-weight: 700; transform: rotateY(180deg); }.memory-card.is-open .card-front { transform: rotateY(0); }.memory-card.is-open .card-back { transform: rotateY(-180deg); }.memory-card.is-match .card-front { background: #f6e3d1; }.memory-card b { font-size: clamp(2rem, 5vw, 3rem); }.memory-card small { margin-top: 8px; font-size: clamp(.63rem, 1.7vw, .85rem); }
 .history-game { text-align: center; }.history-scene { display: flex; min-height: 180px; max-width: 720px; padding: 24px; align-items: center; justify-content: center; margin: auto; border: 2px solid #f0d2bd; border-radius: 5px; background: #fff7ed; color: #793937; font-size: clamp(2.4rem, 8vw, 5rem); letter-spacing: .12em; }.history-options { display: grid; grid-template-columns: repeat(4, 1fr); max-width: 600px; gap: 12px; margin: 28px auto; }.history-option { min-height: 90px; border-radius: 5px; background: #fff7ed; color: #793937; font-size: 2.3rem; }
 .result { display: flex; align-items: center; justify-content: center; flex-direction: column; }.result-symbol { display: grid; width: 76px; height: 76px; margin-bottom: 26px; place-items: center; border: 2px solid #fff7ed; border-radius: 50%; font-size: 2.6rem; }.actions.vertical { align-items: stretch; justify-content: center; flex-direction: column; }.shortcut-row { display: flex; gap: 10px; }.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
-@media (max-width: 680px) { .site-header { padding: 24px 16px 18px; }.header-actions { top: 18px; right: 16px; }.icon-button { width: 28px; height: 28px; }.hero, .page { width: calc(100% - 28px); min-height: calc(100vh - 132px); padding: 30px 20px; }.level-grid { grid-template-columns: 1fr; }.level-card { min-height: 145px; }.memory-grid { gap: 7px; }.game-top { margin-bottom: 18px; }.game-meta { gap: 8px; font-size: .8rem; }.history-options { gap: 8px; }.history-option { min-height: 70px; font-size: 1.8rem; }.history-scene { min-height: 145px; padding: 16px; } }
+@media (max-width: 680px) { .site-header { padding: 24px 16px 18px; }.brand { font-size: 42pt; }.header-actions { top: 18px; right: 16px; }.icon-button { width: 28px; height: 28px; }.hero, .page { width: calc(100% - 28px); height: 610px; padding: 30px 20px; }.level-grid { grid-template-columns: 1fr; }.level-card { min-height: 126px; }.memory-grid { gap: 7px; }.game-top { margin-bottom: 18px; }.game-meta { gap: 8px; font-size: .8rem; }.history-options { gap: 8px; }.history-option { min-height: 70px; font-size: 1.8rem; }.history-scene { min-height: 145px; padding: 16px; } }
