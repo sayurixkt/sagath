@@ -1,3 +1,6 @@
+export type Level = 'easy' | 'medium' | 'hard';
+export type Language = 'pt' | 'en';
+
 export const GAME_LIMIT_MS = 3 * 60 * 1000;
 export const HISTORY_VIEW_MS = 5 * 1000;
 export const HISTORY_ANSWER_MS = 10 * 1000;

@@ -1,5 +1,5 @@
 import './styles.css';
-import { copy, countries, GAME_LIMIT_MS, HISTORY_ANSWER_MS, HISTORY_VIEW_MS, historyChallenges, mathPairs } from './content.js';
+import { copy, countries, GAME_LIMIT_MS, HISTORY_ANSWER_MS, HISTORY_VIEW_MS, historyChallenges, mathPairs } from './content';
 const app = document.querySelector('#app');
 let language = localStorage.getItem('sagath-language') || 'pt';
 let dark = localStorage.getItem('sagath-theme') === 'dark';
@@ -37,7 +37,18 @@ function clearTimers() { window.clearInterval(tickId); window.clearTimeout(histo
 function navigate(next) { clearTimers(); if (next !== 'game')
     stopAudio(); page = next; render(); }
 function header() {
-    return `<header class="site-header"><button class="brand" data-nav="home" aria-label="Sagath home">Sagath</button><div class="header-actions"><button class="icon-button" data-action="language" aria-label="Change language">${language === 'pt' ? 'EN' : 'PT'}</button><button class="icon-button" data-action="theme" aria-label="Change colour theme">${dark ? '☀' : '☾'}</button><button class="icon-button" data-action="sound" aria-label="${soundOn ? t().soundOn : t().soundOff}">${soundOn ? '♩' : '♩̸'}</button></div></header>`;
+    return `<header class="site-header">
+      <h1 class="brand">Sagath</h1>
+      <nav class="main-navigation" aria-label="Navegação principal">
+        <button class="nav-button" data-nav="home">Início</button>
+        <button class="nav-button" data-nav="about">Sobre</button>
+      </nav>
+      <div class="header-actions" aria-label="Preferências">
+        <button class="icon-button" data-action="language" aria-label="Alterar idioma">${language === 'pt' ? 'EN' : 'PT'}</button>
+        <button class="icon-button" data-action="theme" aria-label="Alterar tema">${dark ? '☀' : '☾'}</button>
+        <button class="icon-button" data-action="sound" aria-label="${soundOn ? t().soundOn : t().soundOff}">${soundOn ? '♩' : '♩̸'}</button>
+      </div>
+    </header>`;
 }
 function levelCards() {
     const descriptions = { easy: '🗺️', medium: '➗', hard: '🏛️' };
