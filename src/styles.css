@@ -12,9 +12,9 @@ body { min-width: 320px; margin: 0; background: #ede2d0; color: #fff7ed; }
 button { border: 0; cursor: pointer; font: inherit; }
 
 .site-header { position: relative; max-width: 1180px; margin: 0 auto; padding: 28px 24px 20px; text-align: center; }
-.brand { margin: 0; color: #793937; font-family: 'Hyperwave Two', Georgia, serif; font-size: 72pt; font-weight: 400; line-height: 1; }
+.brand { margin: 0; color: #793937; font-family: 'Hyperwave Two', Georgia, serif; font-size: 84pt; font-weight: 400; line-height: 1; }
 .main-navigation { display: flex; justify-content: center; gap: 12px; margin-top: 16px; }
-.nav-button { min-width: 132px; padding: 12px 28px; border-radius: 6px; background: #884e49; color: #fff7ed; font-family: 'Boogaloo', cursive; font-size: 1.55rem; }
+.nav-button { min-width: 112px; padding: 10px 22px; border-radius: 6px; background: #884e49; color: #fff7ed; font-family: 'Boogaloo', cursive; font-size: 1.35rem; }
 .nav-button:hover, .nav-button:focus-visible { background: #793937; }
 .header-actions { position: absolute; top: 24px; right: 24px; display: flex; gap: 6px; }
 .icon-button { width: 32px; height: 32px; border: 1px solid #b77c70; border-radius: 50%; background: transparent; color: #793937; font-size: .8rem; font-weight: 700; }
@@ -29,9 +29,12 @@ button { border: 0; cursor: pointer; font: inherit; }
 .primary, .secondary, .small-button { min-height: 46px; padding: 0 22px; border: 1px solid transparent; border-radius: 5px; font-weight: 700; }
 .primary, .secondary, .small-button { border-color: #884e49; background: #884e49; color: #fff7ed; }
 .text-button { padding: 7px 0; background: transparent; color: #fff7ed; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.back-button,
+.instruction .text-button,
+.prose .text-button { margin-top: 28px; color: #884e49; font-size: 1.15rem; }
 .welcome, .level-choice, .instruction { display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; }
 .welcome h2, .level-choice h2, .instruction h2 { margin: 0 0 18px; color: #793937; font-family: 'Boogaloo', cursive; font-size: clamp(2rem, 5vw, 3.7rem); font-weight: 400; }
-.welcome-brand { display: inline-block; font-family: 'Hyperwave Two', Georgia, serif; font-size: 2em; }
+.welcome-brand { display: inline-block; font-family: 'Hyperwave Two', Georgia, serif; font-size: 1.35em; }
 .welcome p, .instruction p { max-width: 650px; margin: 0 0 30px; color: #4e2927; font-size: clamp(1rem, 2.2vw, 1.25rem); }
 .round-action { display: grid; width: 126px; height: 126px; place-items: center; border-radius: 50%; background: #884e49; color: #fff7ed; font-family: 'Boogaloo', cursive; font-size: 1.45rem; }
 .round-action:hover { background: #793937; }
