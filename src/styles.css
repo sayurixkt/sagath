@@ -12,7 +12,7 @@ body { min-width: 320px; margin: 0; background: #ede2d0; color: #fff7ed; }
 button { border: 0; cursor: pointer; font: inherit; }
 
 .site-header { position: relative; max-width: 1180px; margin: 0 auto; padding: 28px 24px 20px; text-align: center; }
-.brand { margin: 0; color: #793937; font-family: 'Hyperwave Two', Georgia, serif; font-size: 64pt; font-weight: 400; line-height: 1; }
+.brand { margin: 0; color: #793937; font-family: 'Hyperwave Two', Georgia, serif; font-size: 72pt; font-weight: 400; line-height: 1; }
 .main-navigation { display: flex; justify-content: center; gap: 12px; margin-top: 16px; }
 .nav-button { min-width: 132px; padding: 12px 28px; border-radius: 6px; background: #884e49; color: #fff7ed; font-family: 'Boogaloo', cursive; font-size: 1.55rem; }
 .nav-button:hover, .nav-button:focus-visible { background: #793937; }
@@ -31,7 +31,7 @@ button { border: 0; cursor: pointer; font: inherit; }
 .text-button { padding: 7px 0; background: transparent; color: #fff7ed; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 .welcome, .level-choice, .instruction { display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; }
 .welcome h2, .level-choice h2, .instruction h2 { margin: 0 0 18px; color: #793937; font-family: 'Boogaloo', cursive; font-size: clamp(2rem, 5vw, 3.7rem); font-weight: 400; }
-.welcome-brand { font-family: 'Hyperwave Two', Georgia, serif; text-decoration: underline; text-underline-offset: .15em; }
+.welcome-brand { display: inline-block; font-family: 'Hyperwave Two', Georgia, serif; font-size: 2em; }
 .welcome p, .instruction p { max-width: 650px; margin: 0 0 30px; color: #4e2927; font-size: clamp(1rem, 2.2vw, 1.25rem); }
 .round-action { display: grid; width: 126px; height: 126px; place-items: center; border-radius: 50%; background: #884e49; color: #fff7ed; font-family: 'Boogaloo', cursive; font-size: 1.45rem; }
 .round-action:hover { background: #793937; }
@@ -46,3 +46,28 @@ button { border: 0; cursor: pointer; font: inherit; }
 .history-game { text-align: center; }.history-scene { display: flex; min-height: 180px; max-width: 720px; padding: 24px; align-items: center; justify-content: center; margin: auto; border: 2px solid #f0d2bd; border-radius: 5px; background: #fff7ed; color: #793937; font-size: clamp(2.4rem, 8vw, 5rem); letter-spacing: .12em; }.history-options { display: grid; grid-template-columns: repeat(4, 1fr); max-width: 600px; gap: 12px; margin: 28px auto; }.history-option { min-height: 90px; border-radius: 5px; background: #fff7ed; color: #793937; font-size: 2.3rem; }
 .result { display: flex; align-items: center; justify-content: center; flex-direction: column; }.result-symbol { display: grid; width: 76px; height: 76px; margin-bottom: 26px; place-items: center; border: 2px solid #fff7ed; border-radius: 50%; font-size: 2.6rem; }.actions.vertical { align-items: stretch; justify-content: center; flex-direction: column; }.shortcut-row { display: flex; gap: 10px; }.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
 @media (max-width: 680px) { .site-header { padding: 24px 16px 18px; }.brand { font-size: 42pt; }.header-actions { top: 18px; right: 16px; }.icon-button { width: 28px; height: 28px; }.hero, .page { width: calc(100% - 28px); height: 610px; padding: 30px 20px; }.level-grid { grid-template-columns: 1fr; }.level-card { min-height: 126px; }.memory-grid { gap: 7px; }.game-top { margin-bottom: 18px; }.game-meta { gap: 8px; font-size: .8rem; }.history-options { gap: 8px; }.history-option { min-height: 70px; font-size: 1.8rem; }.history-scene { min-height: 145px; padding: 16px; } }
+
+/* A janela do jogo mantém as mesmas dimensões em todas as páginas. */
+.hero,
+.page,
+.narrow,
+.prose,
+.instruction,
+.game {
+  width: min(calc(100% - 40px), 1120px);
+  max-width: 1120px;
+  height: 680px;
+}
+
+@media (max-width: 680px) {
+  .hero,
+  .page,
+  .narrow,
+  .prose,
+  .instruction,
+  .game {
+    width: calc(100% - 28px);
+    max-width: none;
+    height: 610px;
+  }
+}
