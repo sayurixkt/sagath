@@ -6,7 +6,7 @@ export const HISTORY_VIEW_MS = 5 * 1000;
 export const HISTORY_ANSWER_MS = 10 * 1000;
 export const copy = {
     pt: {
-        play: 'Jogar', about: 'Sobre o projeto', levels: 'Escolha uma fase', instructions: 'Como jogar', start: 'Começar fase', menu: 'Menu', retry: 'Tente novamente',
+        play: 'Jogar', about: 'Sobre o projeto', levels: 'Escolha o nível', instructions: 'Como jogar', start: 'Continuar', menu: 'Menu', retry: 'Tente novamente',
         easy: 'Fácil', medium: 'Médio', hard: 'Difícil', time: 'Tempo', moves: 'Tentativas', back: 'Voltar', soundOn: 'Desligar som', soundOff: 'Ligar som',
         easyIntro: 'Encontre os pares de bandeiras. Não há limite de tempo: jogue com calma.',
         mediumIntro: 'Encontre cada operação e seu resultado antes que o tempo termine.',
@@ -20,7 +20,7 @@ export const copy = {
         principles: 'A experiência usa uma interface clara, poucos elementos por tela, cores suaves e nenhuma coleta de dados pessoais.'
     },
     en: {
-        play: 'Play', about: 'About the project', levels: 'Choose a level', instructions: 'How to play', start: 'Start level', menu: 'Menu', retry: 'Try again',
+        play: 'Play', about: 'About the project', levels: 'Choose a level', instructions: 'How to play', start: 'Continue', menu: 'Menu', retry: 'Try again',
         easy: 'Easy', medium: 'Medium', hard: 'Hard', time: 'Time', moves: 'Attempts', back: 'Back', soundOn: 'Turn sound off', soundOff: 'Turn sound on',
         easyIntro: 'Find the matching flag pairs. There is no time limit: take your time.',
         mediumIntro: 'Match every operation to its result before time runs out.',

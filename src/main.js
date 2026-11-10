@@ -51,13 +51,24 @@ function header() {
     </header>`;
 }
 function levelCards() {
-    const descriptions = { easy: '🗺️', medium: '➗', hard: '🏛️' };
-    return Object.keys(descriptions).map((key) => `<button class="level-card ${key}" data-level="${key}"><span>${descriptions[key]}</span><strong>${levelLabel(key)}</strong><small>${key === 'easy' ? 'Geografia' : key === 'medium' ? 'Matemática' : 'História'}</small></button>`).join('');
+    return ['easy', 'medium', 'hard'].map((key) => `<button class="level-card" data-level="${key}">${levelLabel(key)}</button>`).join('');
 }
-function home() { return `<main class="hero"><p class="eyebrow">9–12 anos</p><h1>${t().projectTitle}</h1><p>Memória, atenção e raciocínio lógico em desafios breves e tranquilos.</p><div class="actions"><button class="primary" data-nav="levels">${t().play}</button><button class="secondary" data-nav="about">${t().about}</button></div></main>`; }
-function levels() { return `<main class="page narrow"><p class="eyebrow">Sagath</p><h1>${t().levels}</h1><div class="level-grid">${levelCards()}</div></main>`; }
+function home() { return `<main class="hero welcome"><h2>Bem vindo(a) ao jogo Sagath</h2><p>Esse jogo é composto por 3 fases, estimule o seu raciocínio enquanto se diverte!</p><button class="round-action" data-nav="levels">Jogar</button></main>`; }
+function levels() { return `<main class="page narrow level-choice"><h2>Escolha o nível</h2><div class="level-grid">${levelCards()}</div></main>`; }
 function about() { return `<main class="page prose"><p class="eyebrow">Sagath</p><h1>${t().about}</h1><h2>${t().projectTitle}</h2><p>${t().projectText}</p><p>${t().principles}</p><button class="secondary" data-nav="home">${t().back}</button></main>`; }
-function instructions() { const intro = level === 'easy' ? t().easyIntro : level === 'medium' ? t().mediumIntro : t().hardIntro; return `<main class="page narrow instruction"><p class="eyebrow">${levelLabel(level)}</p><h1>${t().instructions}</h1><div class="instruction-icon">${level === 'easy' ? '🗺️' : level === 'medium' ? '➗' : '🏛️'}</div><p>${intro}</p>${level !== 'easy' ? `<p class="quiet">${t().time}: 03:00</p>` : ''}<button class="primary" data-action="start">${t().start}</button><button class="text-button" data-nav="levels">${t().back}</button></main>`; }
+function instructions() {
+    const text = level === 'easy'
+        ? 'Esse é um jogo de memória tradicional com tema de bandeira de países. Ele não possui contador de tempo, divirta-se em seu próprio tempo.'
+        : level === 'medium'
+            ? 'A fase média é um jogo de memória mais complexo que a fase anterior. Cada par é formado por uma operação matemática e o seu resultado.'
+            : 'Uma figura será mostrada por 5 segundos, preste atenção em todos os detalhes. Depois a figura reaparecerá com algum elemento faltando, selecione-o.';
+    const images = level === 'medium'
+        ? `<div class="phase-examples"><div class="image-placeholder">mex1</div><div class="image-placeholder">mex2</div></div>`
+        : level === 'hard'
+            ? `<div class="phase-examples"><div class="image-placeholder">dex1<br><small>antes</small></div><div class="image-placeholder">dex2<br><small>depois</small></div></div>`
+            : '';
+    return `<main class="page narrow instruction"><h2>${levelLabel(level)}</h2><p>${text}</p>${images}<button class="round-action" data-action="start">${t().start}</button><button class="text-button" data-nav="levels">${t().back}</button></main>`;
+}
 function buildCards() {
     if (level === 'easy')
         return shuffle(countries.flatMap(([pt, en, flag], index) => [{ id: `a${index}`, value: flag, pair: String(index), label: language === 'pt' ? pt : en }, { id: `b${index}`, value: flag, pair: String(index), label: language === 'pt' ? pt : en }]));
