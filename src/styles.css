@@ -33,9 +33,12 @@ button { border: 0; cursor: pointer; font: inherit; }
 .instruction .text-button,
 .prose .text-button { margin-top: 28px; color: #884e49; font-size: 1.15rem; }
 .welcome, .level-choice, .instruction { display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; }
-.welcome h2, .level-choice h2, .instruction h2 { margin: 0 0 18px; color: #793937; font-family: 'Boogaloo', cursive; font-size: clamp(2rem, 5vw, 3.7rem); font-weight: 400; }
+.welcome h2, .level-choice h2, .instruction h2, .about-page h2 { margin: 0 0 18px; color: #793937; font-family: 'Boogaloo', cursive; font-size: clamp(2rem, 5vw, 3.7rem); font-weight: 400; }
 .welcome-brand { display: inline-block; font-family: 'Hyperwave Two', Georgia, serif; font-size: 1.35em; }
 .welcome p, .instruction p { max-width: 650px; margin: 0 0 30px; color: #4e2927; font-size: clamp(1rem, 2.2vw, 1.25rem); }
+.about-page h2 { text-align: center; }
+.about-copy { max-width: 650px; margin: 38px auto 0; }
+.about-copy p { margin: 0 0 24px; color: #4e2927; font-size: clamp(1rem, 2.2vw, 1.25rem); line-height: 1.65; }
 .round-action { display: grid; width: 126px; height: 126px; place-items: center; border-radius: 50%; background: #884e49; color: #fff7ed; font-family: 'Boogaloo', cursive; font-size: 1.45rem; }
 .round-action:hover { background: #793937; }
 .phase-examples { display: grid; grid-template-columns: repeat(2, minmax(120px, 220px)); gap: 16px; justify-content: center; margin: 0 auto 30px; }
