@@ -9,6 +9,30 @@ export const easyCardImages = Array.from(
     { length: 20 },
     (_, index) => `/assets/cards/pt/easy/FPT${index + 1}.png`
 );
+
+export const mediumCardPairs = Array.from(
+    { length: 8 },
+    (_, index) => {
+        const id = String(index + 1);
+        return {
+            id,
+            question: `/assets/cards/pt/medium/${id}P.png`,
+            answer: `/assets/cards/pt/medium/${id}R.png`
+        };
+    }
+);
+
+export const hardCardPairs = Array.from(
+    { length: 18 },
+    (_, index) => {
+        const id = String(index + 9);
+        return {
+            id,
+            question: `/assets/cards/pt/hard/${id}P.png`,
+            answer: `/assets/cards/pt/hard/${id}R.png`
+        };
+    }
+);
 export const copy = {
     pt: {
         play: 'Jogar', about: 'Sobre o projeto', levels: 'Escolha o nível', instructions: 'Como jogar', start: 'Continuar', menu: 'Menu', retry: 'Tente novamente',
