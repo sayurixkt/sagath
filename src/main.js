@@ -1,8 +1,8 @@
 import './styles.css';
 import { copy, easyCardImages, GAME_LIMIT_MS, HISTORY_ANSWER_MS, HISTORY_VIEW_MS, historyChallenges, mathPairs } from './content';
 const app = document.querySelector('#app');
-let language = localStorage.getItem('sagath-language') || 'pt';
-let dark = localStorage.getItem('sagath-theme') === 'dark';
+const language = 'pt';
+const dark = false;
 let soundOn = true;
 let page = 'home';
 let level = 'easy';
@@ -43,9 +43,7 @@ function header() {
         <button class="nav-button" data-nav="home">Início</button>
         <button class="nav-button" data-nav="about">Sobre</button>
       </nav>
-      <div class="header-actions" aria-label="Preferências">
-        <button class="icon-button" data-action="language" aria-label="Alterar idioma">${language === 'pt' ? 'EN' : 'PT'}</button>
-        <button class="icon-button" data-action="theme" aria-label="Alterar tema">${dark ? '☀' : '☾'}</button>
+      <div class="header-actions" aria-label="Som do jogo">
         <button class="icon-button" data-action="sound" aria-label="${soundOn ? t().soundOn : t().soundOff}">${soundOn ? '♩' : '♩̸'}</button>
       </div>
     </header>`;
@@ -124,8 +122,6 @@ function render() { document.documentElement.lang = language === 'pt' ? 'pt-BR' 
 function attachEvents() {
     document.querySelectorAll('[data-nav]').forEach((element) => element.addEventListener('click', () => navigate(element.dataset.nav)));
     document.querySelectorAll('[data-level]').forEach((element) => element.addEventListener('click', () => { level = element.dataset.level; navigate('instructions'); }));
-    document.querySelector('[data-action="language"]')?.addEventListener('click', () => { language = language === 'pt' ? 'en' : 'pt'; localStorage.setItem('sagath-language', language); render(); });
-    document.querySelector('[data-action="theme"]')?.addEventListener('click', () => { dark = !dark; localStorage.setItem('sagath-theme', dark ? 'dark' : 'light'); render(); });
     document.querySelector('[data-action="sound"]')?.addEventListener('click', () => { soundOn = !soundOn; if (!soundOn)
         stopAudio();
     else if (page === 'game')
