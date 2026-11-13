@@ -46,10 +46,10 @@ function instructions() {
     const text = level === 'easy'
         ? 'Esse é um jogo de memória tradicional com tema de bandeira de países. Ele não possui contador de tempo, divirta-se em seu próprio tempo.'
         : level === 'medium'
-            ? 'A fase média é um jogo de memória mais complexo que a fase anterior. Cada par é formado por uma adição ou subtração e o seu respectivo resultado.<br>Encontre o resultado de cada par!'
+            ? 'O nível médio também é um jogo da memória tradicional, porém um pouco mais complexo.<br>Cada par é formado por expressões matemáticas de adição ou subtração e seu respectivo resultado, como exemplificado a seguir:'
             : 'A fase difícil também é um jogo da memória. Encontre os pares formados por uma carta de pergunta e sua respectiva resposta.';
     const images = level === 'medium'
-        ? `<div class="phase-examples"><img src="/assets/cards/pt/medium/1P.png" alt="Exemplo de operação matemática"><img src="/assets/cards/pt/medium/1R.png" alt="Exemplo de resultado matemático"></div><p class="instruction-note">Você possui 3 minutos para encontrar todos os pares, divirta-se</p>`
+        ? `<div class="phase-examples"><img src="/assets/cards/pt/medium/1P.png" alt="Exemplo de operação matemática"><img src="/assets/cards/pt/medium/1R.png" alt="Exemplo de resultado matemático"></div><p class="instruction-note">Você possui 3 minutos para encontrar todos os pares, divirta-se!</p>`
         : '';
     return `<main class="page narrow instruction"><h2>${levelLabel(level)}</h2><p>${text}</p>${images}<button class="round-action" data-action="start">${t().start}</button><button class="text-button" data-nav="levels">${t().back}</button></main>`;
 }
