@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="980" viewBox="0 0 1400 980" role="img" aria-labelledby="title desc">
+  <title id="title">Diagrama de classes conceitual do sistema Sagath</title>
+  <desc id="desc">Diagrama com as classes AplicacaoSagath, PartidaMemoria, Carta, ParDeCartas, CatalogoDeConteudo e Interface.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#884e49"/>
+    </marker>
+    <style>
+      .title { font: 700 30px Arial, sans-serif; fill: #793937; }
+      .subtitle { font: 18px Arial, sans-serif; fill: #4e2927; }
+      .box { fill: #fff7ed; stroke: #884e49; stroke-width: 2.5; rx: 8; }
+      .head { fill: #884e49; }
+      .class { font: 700 21px Arial, sans-serif; fill: #fff7ed; text-anchor: middle; }
+      .text { font: 16px Arial, sans-serif; fill: #4e2927; }
+      .line { stroke: #884e49; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+      .label { font: 15px Arial, sans-serif; fill: #793937; font-style: italic; }
+      .divider { stroke: #bfa5a2; stroke-width: 1.5; }
+    </style>
+  </defs>
+
+  <rect width="1400" height="980" fill="#ede2d0"/>
+  <text x="700" y="52" class="title" text-anchor="middle">Diagrama de classes conceitual — Sagath</text>
+  <text x="700" y="82" class="subtitle" text-anchor="middle">Representação das principais responsabilidades da implementação atual</text>
+
+  <path class="line" d="M470 244 C520 244, 540 244, 585 244"/>
+  <text class="label" x="506" y="233">controla</text>
+  <path class="line" d="M265 378 L265 466"/>
+  <text class="label" x="278" y="430">renderiza</text>
+  <path class="line" d="M470 286 C690 286, 820 286, 1010 286"/>
+  <text class="label" x="730" y="276">utiliza</text>
+  <path class="line" d="M750 468 L750 410"/>
+  <text class="label" x="763" y="445">contém 0..*</text>
+  <path class="line" d="M1100 468 L1100 410"/>
+  <text class="label" x="1113" y="445">organiza 0..*</text>
+  <path class="line" d="M955 670 C875 670, 835 670, 790 670"/>
+  <text class="label" x="838" y="659">gera 2</text>
+
+  <g transform="translate(60 120)">
+    <rect class="box" width="410" height="258"/>
+    <rect class="head" width="410" height="46" rx="8"/>
+    <text class="class" x="205" y="30">AplicacaoSagath</text>
+    <line class="divider" x1="0" x2="410" y1="150" y2="150"/>
+    <text class="text" x="18" y="76">− pagina: string</text>
+    <text class="text" x="18" y="100">− nivel: string</text>
+    <text class="text" x="18" y="124">− cartas: Carta[]</text>
+    <text class="text" x="18" y="178">+ renderizar()</text>
+    <text class="text" x="18" y="202">+ navegar(destino)</text>
+    <text class="text" x="18" y="226">+ iniciarJogo()</text>
+    <text class="text" x="18" y="250">+ finalizarJogo(mensagem)</text>
+  </g>
+
+  <g transform="translate(585 120)">
+    <rect class="box" width="330" height="290"/>
+    <rect class="head" width="330" height="46" rx="8"/>
+    <text class="class" x="165" y="30">PartidaMemoria</text>
+    <line class="divider" x1="0" x2="330" y1="168" y2="168"/>
+    <text class="text" x="18" y="76">− cartas: Carta[]</text>
+    <text class="text" x="18" y="100">− cartasViradas: string[]</text>
+    <text class="text" x="18" y="124">− paresEncontrados: Set</text>
+    <text class="text" x="18" y="148">− tentativas: number</text>
+    <text class="text" x="18" y="196">+ selecionarCarta(id)</text>
+    <text class="text" x="18" y="220">+ compararCartas()</text>
+    <text class="text" x="18" y="244">+ verificarConclusao()</text>
+  </g>
+
+  <g transform="translate(1010 120)">
+    <rect class="box" width="330" height="290"/>
+    <rect class="head" width="330" height="46" rx="8"/>
+    <text class="class" x="165" y="30">CatalogoDeConteudo</text>
+    <line class="divider" x1="0" x2="330" y1="168" y2="168"/>
+    <text class="text" x="18" y="76">+ imagensFaceis: string[]</text>
+    <text class="text" x="18" y="100">+ paresMedios: ParDeCartas[]</text>
+    <text class="text" x="18" y="124">+ paresDificeis: ParDeCartas[]</text>
+    <text class="text" x="18" y="148">+ textosInterface: object</text>
+    <text class="text" x="18" y="196">+ obterCartasFaceis()</text>
+    <text class="text" x="18" y="220">+ obterParesMedios()</text>
+    <text class="text" x="18" y="244">+ obterParesDificeis()</text>
+  </g>
+
+  <g transform="translate(100 468)">
+    <rect class="box" width="330" height="226"/>
+    <rect class="head" width="330" height="46" rx="8"/>
+    <text class="class" x="165" y="30">Interface</text>
+    <text class="text" x="18" y="78">+ cabecalho()</text>
+    <text class="text" x="18" y="102">+ paginaInicial()</text>
+    <text class="text" x="18" y="126">+ escolhaDeNivel()</text>
+    <text class="text" x="18" y="150">+ instrucoes()</text>
+    <text class="text" x="18" y="174">+ tabuleiro()</text>
+    <text class="text" x="18" y="198">+ feedback()</text>
+  </g>
+
+  <g transform="translate(585 468)">
+    <rect class="box" width="330" height="198"/>
+    <rect class="head" width="330" height="46" rx="8"/>
+    <text class="class" x="165" y="30">Carta</text>
+    <text class="text" x="18" y="78">+ id: string</text>
+    <text class="text" x="18" y="102">+ imagem: string</text>
+    <text class="text" x="18" y="126">+ par: string</text>
+    <text class="text" x="18" y="150">+ rotulo: string</text>
+  </g>
+
+  <g transform="translate(955 468)">
+    <rect class="box" width="330" height="198"/>
+    <rect class="head" width="330" height="46" rx="8"/>
+    <text class="class" x="165" y="30">ParDeCartas</text>
+    <text class="text" x="18" y="78">+ id: string</text>
+    <text class="text" x="18" y="102">+ pergunta: string</text>
+    <text class="text" x="18" y="126">+ resposta: string</text>
+  </g>
+
+  <text x="700" y="914" class="subtitle" text-anchor="middle">As classes representam entidades conceituais; a implementação utiliza funções JavaScript e dados tipados em TypeScript.</text>
+</svg>
