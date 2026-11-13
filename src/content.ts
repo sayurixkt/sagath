@@ -4,6 +4,11 @@ export type Language = 'pt' | 'en';
 export const GAME_LIMIT_MS = 3 * 60 * 1000;
 export const HISTORY_VIEW_MS = 5 * 1000;
 export const HISTORY_ANSWER_MS = 10 * 1000;
+
+export const easyCardImages = Array.from(
+    { length: 20 },
+    (_, index) => `/assets/cards/pt/easy/FPT${index + 1}.png`
+);
 export const copy = {
     pt: {
         play: 'Jogar', about: 'Sobre o projeto', levels: 'Escolha o nível', instructions: 'Como jogar', start: 'Continuar', menu: 'Menu', retry: 'Tente novamente',
@@ -11,7 +16,7 @@ export const copy = {
         easyIntro: 'Encontre os pares de bandeiras. Não há limite de tempo: jogue com calma.',
         mediumIntro: 'Encontre cada operação e seu resultado antes que o tempo termine.',
         hardIntro: 'Observe a imagem histórica. Depois, escolha qual elemento foi removido.',
-        easyDone: (time) => `Parabéns! Você finalizou em ${time}.`,
+        easyDone: () => 'Parabéns! Você encontrou todos os pares.',
         mediumDone: (time) => `Parabéns! Você terminou o jogo em ${time}.`,
         hardDone: (score, time) => `Você acertou ${score}% em ${time}.`,
         timeUp: 'O tempo acabou! Continue praticando.', next: 'Próximo desafio', question: 'Qual destes elementos foi removido da imagem?',
@@ -25,7 +30,7 @@ export const copy = {
         easyIntro: 'Find the matching flag pairs. There is no time limit: take your time.',
         mediumIntro: 'Match every operation to its result before time runs out.',
         hardIntro: 'Study the historical image. Then choose which item was removed.',
-        easyDone: (time) => `Great job! You finished in ${time}.`,
+        easyDone: () => 'Great job! You found every pair.',
         mediumDone: (time) => `Great job! You finished in ${time}.`,
         hardDone: (score, time) => `You scored ${score}% in ${time}.`,
         timeUp: 'Time is up! Keep practising.', next: 'Next challenge', question: 'Which item was removed from the image?',

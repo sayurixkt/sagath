@@ -1,5 +1,5 @@
 import './styles.css';
-import { copy, countries, GAME_LIMIT_MS, HISTORY_ANSWER_MS, HISTORY_VIEW_MS, historyChallenges, mathPairs } from './content';
+import { copy, easyCardImages, GAME_LIMIT_MS, HISTORY_ANSWER_MS, HISTORY_VIEW_MS, historyChallenges, mathPairs } from './content';
 const app = document.querySelector('#app');
 let language = localStorage.getItem('sagath-language') || 'pt';
 let dark = localStorage.getItem('sagath-theme') === 'dark';
@@ -79,13 +79,22 @@ function instructions() {
     return `<main class="page narrow instruction"><h2>${levelLabel(level)}</h2><p>${text}</p>${images}<button class="round-action" data-action="start">${t().start}</button><button class="text-button" data-nav="levels">${t().back}</button></main>`;
 }
 function buildCards() {
-    if (level === 'easy')
-        return shuffle(countries.flatMap(([pt, en, flag], index) => [{ id: `a${index}`, value: flag, pair: String(index), label: language === 'pt' ? pt : en }, { id: `b${index}`, value: flag, pair: String(index), label: language === 'pt' ? pt : en }]));
+    if (level === 'easy') {
+        const chosenImages = shuffle(easyCardImages).slice(0, 5);
+        return shuffle(chosenImages.flatMap((image, index) => [
+            { id: `a${index}`, image, pair: String(index), label: 'Bandeira' },
+            { id: `b${index}`, image, pair: String(index), label: 'Bandeira' }
+        ]));
+    }
     return shuffle(mathPairs.flatMap(([operation, answer], index) => [{ id: `a${index}`, value: operation, pair: String(index) }, { id: `b${index}`, value: answer, pair: String(index) }]));
 }
-function gameHeader() { return `<div class="game-meta"><span>${t().time} <strong id="timer">00:00</strong></span>${level !== 'hard' ? `<span>${t().moves} <strong id="moves">0</strong></span>` : `<span>${historyIndex + 1}/10</span>`}</div>`; }
+function gameHeader() {
+    if (level === 'easy')
+        return `<div class="game-meta"><span>${t().moves} <strong id="moves">0</strong></span></div>`;
+    return `<div class="game-meta"><span>${t().time} <strong id="timer">00:00</strong></span>${level === 'medium' ? `<span>${t().moves} <strong id="moves">0</strong></span>` : `<span>${historyIndex + 1}/10</span>`}</div>`;
+}
 function memoryGame() {
-    return `<main class="page game"><div class="game-top"><button class="text-button" data-nav="levels">← ${t().menu}</button>${gameHeader()}</div><h1 class="sr-only">${levelLabel(level)}</h1><section class="memory-grid ${level}" aria-label="Memory cards">${cards.map((card) => { const shown = flipped.includes(card.id) || matched.has(card.id); return `<button class="memory-card ${shown ? 'is-open' : ''} ${matched.has(card.id) ? 'is-match' : ''}" data-card="${card.id}" aria-label="${shown ? card.label || card.value : 'Carta virada'}"><span class="card-front">${level === 'easy' ? `<b>${card.value}</b><small>${card.label}</small>` : card.value}</span><span class="card-back">✦</span></button>`; }).join('')}</section></main>`;
+    return `<main class="page game"><div class="game-top"><button class="text-button" data-nav="levels">← ${t().menu}</button>${gameHeader()}</div><h1 class="sr-only">${levelLabel(level)}</h1><section class="memory-grid ${level}" aria-label="Cartas da memória">${cards.map((card) => { const shown = flipped.includes(card.id) || matched.has(card.id); const front = level === 'easy' ? `<img src="${card.image}" alt="${card.label}">` : card.value; const back = level === 'easy' ? '<img src="/assets/cards/pt/clarotras.png" alt="Verso da carta">' : '✦'; return `<button class="memory-card ${shown ? 'is-open' : ''} ${matched.has(card.id) ? 'is-match' : ''}" data-card="${card.id}" aria-label="${shown ? card.label || card.value : 'Carta virada'}"><span class="card-front">${front}</span><span class="card-back">${back}</span></button>`; }).join('')}</section></main>`;
 }
 function historyGame() {
     const challenge = historyChallenges[historyIndex];
@@ -124,9 +133,11 @@ function startGame() {
     page = 'game';
     startAudio();
     render();
-    tickId = window.setInterval(() => { elapsed = Date.now() - startTime; const timer = document.querySelector('#timer'); if (timer)
-        timer.textContent = formatTime(elapsed); if (level !== 'easy' && elapsed >= GAME_LIMIT_MS)
-        finish(t().timeUp); }, 250);
+    if (level !== 'easy') {
+        tickId = window.setInterval(() => { elapsed = Date.now() - startTime; const timer = document.querySelector('#timer'); if (timer)
+            timer.textContent = formatTime(elapsed); if (elapsed >= GAME_LIMIT_MS)
+            finish(t().timeUp); }, 250);
+    }
     if (level === 'hard')
         scheduleHistoryAnswer();
 }
@@ -146,7 +157,7 @@ function flipCard(id) {
         flipped = [];
         locked = false;
         window.setTimeout(() => { if (matched.size === cards.length)
-            finish(level === 'easy' ? t().easyDone(formatTime(elapsed)) : t().mediumDone(formatTime(elapsed)));
+            finish(level === 'easy' ? t().easyDone() : t().mediumDone(formatTime(elapsed)));
         else
             render(); }, 400);
     }
