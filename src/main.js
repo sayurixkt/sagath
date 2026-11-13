@@ -90,7 +90,9 @@ function result() {
     const alternatives = Object.keys({ easy: 1, medium: 1, hard: 1 }).filter((item) => item !== level);
     const message = level === 'easy'
         ? 'Parabéns!<br>Você encontrou todos os pares.'
-        : resultText;
+        : resultText === t().timeUp
+            ? 'O tempo acabou!<br>Continue praticando.'
+            : resultText;
     return `<main class="page narrow result"><h1 class="result-message">${message}</h1><div class="actions vertical"><button class="primary" data-action="restart">${t().retry}</button><button class="secondary" data-nav="levels">${t().menu}</button></div><p class="result-level-prompt">${t().levels}</p><div class="shortcut-row">${alternatives.map((item) => `<button class="small-button" data-level="${item}">${levelLabel(item)}</button>`).join('')}</div></main>`;
 }
 function render() { document.documentElement.lang = 'pt-BR'; const view = { home, levels, about, instructions, game: memoryGame, result }[page](); app.innerHTML = `${header()}${view}`; attachEvents(); }
