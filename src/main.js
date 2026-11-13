@@ -46,10 +46,10 @@ function instructions() {
     const text = level === 'easy'
         ? 'Esse é um jogo de memória tradicional com tema de bandeira de países. Ele não possui contador de tempo, divirta-se em seu próprio tempo.'
         : level === 'medium'
-            ? 'A fase média é um jogo de memória mais complexo que a fase anterior. Cada par é formado por uma operação matemática e o seu resultado.'
+            ? 'A fase média é um jogo de memória mais complexo que a fase anterior. Cada par é formado por uma adição ou subtração e o seu respectivo resultado.<br>Encontre o resultado de cada par!'
             : 'A fase difícil também é um jogo da memória. Encontre os pares formados por uma carta de pergunta e sua respectiva resposta.';
     const images = level === 'medium'
-        ? `<div class="phase-examples"><div class="image-placeholder">mex1</div><div class="image-placeholder">mex2</div></div>`
+        ? `<div class="phase-examples"><img src="/assets/cards/pt/medium/1P.png" alt="Exemplo de operação matemática"><img src="/assets/cards/pt/medium/1R.png" alt="Exemplo de resultado matemático"></div><p class="instruction-note">Você possui 3 minutos para encontrar todos os pares, divirta-se</p>`
         : '';
     return `<main class="page narrow instruction"><h2>${levelLabel(level)}</h2><p>${text}</p>${images}<button class="round-action" data-action="start">${t().start}</button><button class="text-button" data-nav="levels">${t().back}</button></main>`;
 }
@@ -72,7 +72,7 @@ function buildCards() {
 function gameHeader() {
     if (level === 'easy')
         return `<div class="game-meta"><span>${t().moves} <strong id="moves">0</strong></span></div>`;
-    return `<div class="game-meta"><span>${t().time} <strong id="timer">00:00</strong></span><span>${t().moves} <strong id="moves">0</strong></span></div>`;
+    return `<div class="game-meta"><span>${t().time} <strong id="timer">${formatTime(GAME_LIMIT_MS)}</strong></span><span>${t().moves} <strong id="moves">0</strong></span></div>`;
 }
 function memoryCard(card) {
     const shown = flipped.includes(card.id) || matched.has(card.id);
@@ -111,8 +111,8 @@ function startGame() {
     page = 'game';
     render();
     if (level !== 'easy') {
-        tickId = window.setInterval(() => { elapsed = Date.now() - startTime; const timer = document.querySelector('#timer'); if (timer)
-            timer.textContent = formatTime(elapsed); if (elapsed >= GAME_LIMIT_MS)
+        tickId = window.setInterval(() => { elapsed = Date.now() - startTime; const remainingTime = Math.max(0, GAME_LIMIT_MS - elapsed); const timer = document.querySelector('#timer'); if (timer)
+            timer.textContent = formatTime(remainingTime); if (elapsed >= GAME_LIMIT_MS)
             finish(t().timeUp); }, 250);
     }
 }
