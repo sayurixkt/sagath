@@ -1,8 +1,6 @@
 import './styles.css';
 import { copy, easyCardImages, GAME_LIMIT_MS, hardCardPairs, mediumCardPairs } from './content';
 const app = document.querySelector('#app');
-const language = 'pt';
-const dark = false;
 let soundOn = true;
 let page = 'home';
 let level = 'easy';
@@ -16,7 +14,7 @@ let locked = false;
 let cards = [];
 let resultText = '';
 let audio;
-const t = () => copy[language];
+const t = () => copy;
 const levelLabel = (value) => t()[value];
 const formatTime = (ms) => `${String(Math.floor(ms / 60000)).padStart(2, '0')}:${String(Math.floor(ms / 1000) % 60).padStart(2, '0')}`;
 const shuffle = (items) => [...items].sort(() => Math.random() - 0.5);
@@ -103,12 +101,12 @@ function memoryGame() {
 }
 function result() {
     const alternatives = Object.keys({ easy: 1, medium: 1, hard: 1 }).filter((item) => item !== level);
-    const message = level === 'easy' && language === 'pt'
+    const message = level === 'easy'
         ? 'Parabéns!<br>Você encontrou todos os pares.'
         : resultText;
     return `<main class="page narrow result"><h1 class="result-message">${message}</h1><div class="actions vertical"><button class="primary" data-action="restart">${t().retry}</button><button class="secondary" data-nav="levels">${t().menu}</button></div><p class="result-level-prompt">${t().levels}</p><div class="shortcut-row">${alternatives.map((item) => `<button class="small-button" data-level="${item}">${levelLabel(item)}</button>`).join('')}</div></main>`;
 }
-function render() { document.documentElement.lang = language === 'pt' ? 'pt-BR' : 'en'; document.body.dataset.theme = dark ? 'dark' : 'light'; const view = { home, levels, about, instructions, game: memoryGame, result }[page](); app.innerHTML = `${header()}${view}`; attachEvents(); }
+function render() { document.documentElement.lang = 'pt-BR'; const view = { home, levels, about, instructions, game: memoryGame, result }[page](); app.innerHTML = `${header()}${view}`; attachEvents(); }
 function attachEvents() {
     document.querySelectorAll('[data-nav]').forEach((element) => element.addEventListener('click', () => navigate(element.dataset.nav)));
     document.querySelectorAll('[data-level]').forEach((element) => element.addEventListener('click', () => { level = element.dataset.level; navigate('instructions'); }));
