@@ -79,8 +79,8 @@ function buildCards() {
         ]));
     }
     const pairs = level === 'medium'
-        ? mediumCardPairs
-        : shuffle(hardCardPairs).slice(0, 8);
+        ? shuffle(mediumCardPairs).slice(0, 5)
+        : shuffle(hardCardPairs).slice(0, 5);
     return shuffle(pairs.flatMap(({ id, question, answer }) => [
         { id: `${id}-question`, image: question, pair: id, label: 'Carta de pergunta' },
         { id: `${id}-answer`, image: answer, pair: id, label: 'Carta de resposta' }
