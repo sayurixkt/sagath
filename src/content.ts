@@ -46,8 +46,6 @@ export const copy = {
     time: 'Tempo',
     moves: 'Tentativas',
     back: 'Voltar',
-    soundOn: 'Desligar som',
-    soundOff: 'Ligar som',
     easyDone: () => 'Parabéns! Você encontrou todos os pares.',
     mediumDone: (time: string) => `Parabéns! Você terminou o jogo em ${time}.`,
     timeUp: 'O tempo acabou! Continue praticando.'

@@ -1,7 +1,6 @@
 import './styles.css';
 import { copy, easyCardImages, GAME_LIMIT_MS, hardCardPairs, mediumCardPairs } from './content';
 const app = document.querySelector('#app');
-let soundOn = true;
 let page = 'home';
 let level = 'easy';
 let startTime = 0;
@@ -13,23 +12,12 @@ let flipped = [];
 let locked = false;
 let cards = [];
 let resultText = '';
-let audio;
 const t = () => copy;
 const levelLabel = (value) => t()[value];
 const formatTime = (ms) => `${String(Math.floor(ms / 60000)).padStart(2, '0')}:${String(Math.floor(ms / 1000) % 60).padStart(2, '0')}`;
 const shuffle = (items) => [...items].sort(() => Math.random() - 0.5);
-function stopAudio() { audio?.pause(); if (audio)
-    audio.currentTime = 0; }
-function startAudio() {
-    if (!soundOn)
-        return;
-    audio ?? (audio = new Audio('/assets/audio/ambiente.mp3'));
-    audio.loop = true;
-    audio.play().catch(() => undefined);
-}
 function clearTimers() { window.clearInterval(tickId); }
-function navigate(next) { clearTimers(); if (next !== 'game')
-    stopAudio(); page = next; render(); }
+function navigate(next) { clearTimers(); page = next; render(); }
 function header() {
     return `<header class="site-header">
       <h1 class="brand">Sagath</h1>
@@ -37,9 +25,6 @@ function header() {
         <button class="nav-button" data-nav="home">Início</button>
         <button class="nav-button" data-nav="about">Sobre</button>
       </nav>
-      <div class="header-actions" aria-label="Som do jogo">
-        <button class="icon-button" data-action="sound" aria-label="${soundOn ? t().soundOn : t().soundOff}">${soundOn ? '♩' : '♩̸'}</button>
-      </div>
     </header>`;
 }
 function levelCards() {
@@ -110,10 +95,6 @@ function render() { document.documentElement.lang = 'pt-BR'; const view = { home
 function attachEvents() {
     document.querySelectorAll('[data-nav]').forEach((element) => element.addEventListener('click', () => navigate(element.dataset.nav)));
     document.querySelectorAll('[data-level]').forEach((element) => element.addEventListener('click', () => { level = element.dataset.level; navigate('instructions'); }));
-    document.querySelector('[data-action="sound"]')?.addEventListener('click', () => { soundOn = !soundOn; if (!soundOn)
-        stopAudio();
-    else if (page === 'game')
-        startAudio(); render(); });
     document.querySelector('[data-action="start"]')?.addEventListener('click', startGame);
     document.querySelector('[data-action="restart"]')?.addEventListener('click', startGame);
     document.querySelectorAll('[data-card]').forEach((button) => button.addEventListener('click', () => flipCard(button.dataset.card)));
@@ -128,7 +109,6 @@ function startGame() {
     locked = false;
     cards = buildCards();
     page = 'game';
-    startAudio();
     render();
     if (level !== 'easy') {
         tickId = window.setInterval(() => { elapsed = Date.now() - startTime; const timer = document.querySelector('#timer'); if (timer)
@@ -159,5 +139,5 @@ function flipCard(id) {
     else
         window.setTimeout(() => { flipped = []; locked = false; render(); }, 2000);
 }
-function finish(text) { clearTimers(); resultText = text; stopAudio(); page = 'result'; render(); }
+function finish(text) { clearTimers(); resultText = text; page = 'result'; render(); }
 render();
