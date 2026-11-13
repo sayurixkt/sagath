@@ -3,22 +3,22 @@
   <desc id="desc">Diagrama com as classes AplicacaoSagath, PartidaMemoria, Carta, ParDeCartas, CatalogoDeConteudo e Interface.</desc>
   <defs>
     <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#884e49"/>
+      <path d="M0,0 L0,6 L9,3 z" fill="#000000"/>
     </marker>
     <style>
-      .title { font: 700 30px Arial, sans-serif; fill: #793937; }
-      .subtitle { font: 18px Arial, sans-serif; fill: #4e2927; }
-      .box { fill: #fff7ed; stroke: #884e49; stroke-width: 2.5; rx: 8; }
-      .head { fill: #884e49; }
-      .class { font: 700 21px Arial, sans-serif; fill: #fff7ed; text-anchor: middle; }
-      .text { font: 16px Arial, sans-serif; fill: #4e2927; }
-      .line { stroke: #884e49; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
-      .label { font: 15px Arial, sans-serif; fill: #793937; font-style: italic; }
-      .divider { stroke: #bfa5a2; stroke-width: 1.5; }
+      .title { font: 700 30px Arial, sans-serif; fill: #000000; }
+      .subtitle { font: 18px Arial, sans-serif; fill: #333333; }
+      .box { fill: #ffffff; stroke: #000000; stroke-width: 2.5; rx: 8; }
+      .head { fill: #000000; }
+      .class { font: 700 21px Arial, sans-serif; fill: #ffffff; text-anchor: middle; }
+      .text { font: 16px Arial, sans-serif; fill: #111111; }
+      .line { stroke: #000000; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+      .label { font: 15px Arial, sans-serif; fill: #111111; font-style: italic; }
+      .divider { stroke: #777777; stroke-width: 1.5; }
     </style>
   </defs>
 
-  <rect width="1400" height="980" fill="#ede2d0"/>
+  <rect width="1400" height="980" fill="#ffffff"/>
   <text x="700" y="52" class="title" text-anchor="middle">Diagrama de classes conceitual — Sagath</text>
   <text x="700" y="82" class="subtitle" text-anchor="middle">Representação das principais responsabilidades da implementação atual</text>
 
@@ -28,12 +28,12 @@
   <text class="label" x="278" y="430">renderiza</text>
   <path class="line" d="M470 286 C690 286, 820 286, 1010 286"/>
   <text class="label" x="730" y="276">utiliza</text>
-  <path class="line" d="M750 468 L750 410"/>
+  <path class="line" d="M750 410 L750 468"/>
   <text class="label" x="763" y="445">contém 0..*</text>
-  <path class="line" d="M1100 468 L1100 410"/>
+  <path class="line" d="M1100 410 L1100 468"/>
   <text class="label" x="1113" y="445">organiza 0..*</text>
-  <path class="line" d="M955 670 C875 670, 835 670, 790 670"/>
-  <text class="label" x="838" y="659">gera 2</text>
+  <path class="line" d="M955 567 L915 567"/>
+  <text class="label" x="838" y="555">gera duas cartas</text>
 
   <g transform="translate(60 120)">
     <rect class="box" width="410" height="258"/>
