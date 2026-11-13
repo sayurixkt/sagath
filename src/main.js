@@ -93,8 +93,19 @@ function gameHeader() {
         return `<div class="game-meta"><span>${t().moves} <strong id="moves">0</strong></span></div>`;
     return `<div class="game-meta"><span>${t().time} <strong id="timer">00:00</strong></span>${level === 'medium' ? `<span>${t().moves} <strong id="moves">0</strong></span>` : `<span>${historyIndex + 1}/10</span>`}</div>`;
 }
+function memoryCard(card) {
+    const shown = flipped.includes(card.id) || matched.has(card.id);
+    const front = level === 'easy'
+        ? `<img src="${card.image}" alt="${card.label}">`
+        : card.value;
+    const back = level === 'easy'
+        ? '<img src="/assets/cards/pt/clarotras.png" alt="Verso da carta">'
+        : '✦';
+    return `<button class="memory-card ${shown ? 'is-open' : ''} ${matched.has(card.id) ? 'is-match' : ''}" data-card="${card.id}" aria-label="${shown ? card.label || card.value : 'Carta virada'}"><span class="card-front">${front}</span><span class="card-back">${back}</span></button>`;
+}
 function memoryGame() {
-    return `<main class="page game"><div class="game-top"><button class="text-button" data-nav="levels">← ${t().menu}</button>${gameHeader()}</div><h1 class="sr-only">${levelLabel(level)}</h1><section class="memory-grid ${level}" aria-label="Cartas da memória">${cards.map((card) => { const shown = flipped.includes(card.id) || matched.has(card.id); const front = level === 'easy' ? `<img src="${card.image}" alt="${card.label}">` : card.value; const back = level === 'easy' ? '<img src="/assets/cards/pt/clarotras.png" alt="Verso da carta">' : '✦'; return `<button class="memory-card ${shown ? 'is-open' : ''} ${matched.has(card.id) ? 'is-match' : ''}" data-card="${card.id}" aria-label="${shown ? card.label || card.value : 'Carta virada'}"><span class="card-front">${front}</span><span class="card-back">${back}</span></button>`; }).join('')}</section></main>`;
+    const cardList = cards.map(memoryCard).join('');
+    return `<main class="page game"><div class="game-top"><button class="text-button" data-nav="levels">← ${t().menu}</button>${gameHeader()}</div><h1 class="sr-only">${levelLabel(level)}</h1><section class="memory-grid ${level}" aria-label="Cartas da memória">${cardList}</section></main>`;
 }
 function historyGame() {
     const challenge = historyChallenges[historyIndex];
